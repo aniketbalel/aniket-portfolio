@@ -24,7 +24,7 @@
             "styles": ["src/styles.scss"]
           },
           "configurations": {
-            "production": { 
+            "production": {
               "budgets": [
                 {
                   "type": "initial",

@@ -16,6 +16,7 @@ module.exports = {
         sans: ['Inter', 'sans-serif'],
       },
     },
+    
   },
   plugins: [],
 }
