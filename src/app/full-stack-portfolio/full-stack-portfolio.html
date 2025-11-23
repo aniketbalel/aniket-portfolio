@@ -124,9 +124,8 @@
         {{ profile.title }}
       </h2>
 
-      <p class="text-gray-400 text-base md:text-lg leading-relaxed mb-10 max-w-lg mx-auto lg:mx-0">
-        {{ profile.summary }}
-      </p>
+      <p class="text-gray-400 text-base md:text-lg leading-relaxed mb-10 max-w-lg mx-auto lg:mx-0" [innerHTML]="profile.summary"></p>
+
 
       <!-- Buttons -->
       <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
@@ -260,6 +259,76 @@
     </div>
   </div>
 </section>
+<section id="projects" class="py-24 bg-[#0d0d16] hidden">
+  <div class="max-w-6xl mx-auto px-6">
+    <h3 class="text-3xl font-bold text-white mb-8 border-l-4 border-[#7b82fe] pl-4">Professional Projects</h3>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <article *ngFor="let p of projects" class="bg-[#0a0a13] p-6 rounded-2xl border border-white/5 shadow-lg">
+        <div class="md:flex md:items-start gap-6">
+          <!-- thumbnail -->
+          <div class="w-full md:w-44 flex-shrink-0">
+            <button (click)="openVideo(p.videoUrl, p.poster)" class="group relative w-full rounded-xl overflow-hidden">
+              <img [src]="p.poster" alt="{{p.title}}" class="w-full h-32 object-cover rounded-xl"/>
+              <!-- play icon -->
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="w-14 h-14 rounded-full bg-white/10 group-hover:bg-[#7b82fe]/80 flex items-center justify-center transition">
+                  <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+              </div>
+            </button>
+          </div>
+
+          <!-- details -->
+          <div class="mt-4 md:mt-0">
+            <div class="flex items-center justify-between">
+              <h4 class="text-lg font-semibold text-white">{{ p.title }}</h4>
+              <span class="text-sm text-gray-400">{{ p.year }}</span>
+            </div>
+            <p class="text-gray-400 text-sm mt-2 mb-3">{{ p.summary }}</p>
+
+            <ul class="text-gray-300 text-sm space-y-2">
+              <li *ngFor="let h of p.highlights" class="flex items-start gap-3">
+                <span class="text-[#7b82fe] mt-0.5">▹</span>
+                <span>{{ h }}</span>
+              </li>
+            </ul>
+
+            <div class="mt-4 flex gap-3">
+              <button (click)="openVideo(p.videoUrl, p.poster)" class="px-4 py-2 rounded-full bg-[#7b82fe] text-white text-sm font-semibold hover:shadow-[0_0_20px_rgba(123,130,254,0.25)] transition">
+                Watch Demo
+              </button>
+              <a class="px-4 py-2 rounded-full bg-white/5 text-white text-sm" href="#" (click)="$event.preventDefault()">Case Study</a>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Video Modal (at end of body / component) -->
+<div *ngIf="activeVideoUrl" class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-6">
+  <div class="relative w-full max-w-4xl bg-transparent">
+    <button (click)="closeVideo()" class="absolute -top-4 -right-4 bg-white/10 hover:bg-white/20 rounded-full p-2 z-50">
+      ✕
+    </button>
+
+    <video
+      [src]="activeVideoUrl"
+      [poster]="activePoster"
+      controls
+      playsinline
+      autoplay
+      preload="metadata"
+      class="w-full rounded-xl shadow-2xl bg-black"
+    >
+      Your browser does not support the video tag.
+    </video>
+
+   
+  </div>
+</div>
 
 <!-- Education & Certifications -->
 <section class="py-24 bg-[#0d0d16] border-t border-white/5">
