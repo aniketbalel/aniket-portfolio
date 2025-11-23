@@ -1,3 +1,6 @@
 import { Routes } from '@angular/router';
-
-export const routes: Routes = [];
+import { FullStackPortfolio } from './full-stack-portfolio/full-stack-portfolio';
+export const routes: Routes = [
+    { path: '', component: FullStackPortfolio },
+     { path: '**', redirectTo: '' }
+];

@@ -1,1 +1,50 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0a0a13; /* Deep Dark Theme */
+  color: #f1f5f9;            /* Light Text */
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+/* --- CUSTOM SCROLLBAR --- */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a13;
+}
+::-webkit-scrollbar-thumb {
+  background: #2d2d44;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #7b82fe; /* Accent Color */
+}
+
+/* --- SIMPLE CSS ANIMATIONS (No JS Required) --- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Delays for cascading effect */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
