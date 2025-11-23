@@ -30,7 +30,7 @@ export class FullStackPortfolio {
     title: 'Full Stack Developer',
     email: 'aniketbalel@gmail.com',
     phone: '+91 7384808391',
-    image: 'images/profile-pic.jpg', // Ensure this file exists in /public/images/
+    image: 'images/profile-pic_3.jpg', // Ensure this file exists in /public/images/
     location: 'India',
     links: {
       linkedin: 'https://www.linkedin.com/in/aniket-balel/',
